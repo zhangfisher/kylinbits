@@ -9,13 +9,13 @@
  *
  *
  */
-import { presetThemes } from './presets'
-import type { DynamicThemeOptions, ThemeOptions, ThemeSize } from './types'
-import { getId, toRGBString } from './utils'
-import { generateThemeColorVars } from './utils/generateThemeColorVars'
-import { getVarsStyles } from './utils/getVarsStyles'
-import { injectStylesheet } from './utils/injectStylesheet'
-import { toVarStyles } from './utils/toVarStyles'
+import { presetThemes } from "./presets";
+import type { DynamicThemeOptions, ThemeOptions, ThemeSize } from "./types";
+import { getId, toRGBString } from "./utils";
+import { generateThemeColorVars } from "./utils/generateThemeColorVars";
+import { getVarsStyles } from "./utils/getVarsStyles";
+import { injectStylesheet } from "./utils/injectStylesheet";
+import { toVarStyles } from "./utils/toVarStyles";
 import {
     baseVars,
     radiusVars,
@@ -23,245 +23,195 @@ import {
     shadowVars,
     spacingVars,
     sizeVars,
-    lightThemeVars,
-    darkThemeVars,
-} from './vars'
-import { mapCssSelector } from './utils/mapSelector'
-
+    lightColorVars,
+    lightColorizedColorVars,
+    darkColorVars,
+    darkColorizedColorVars,
+} from "./vars";
 export class ThemeScope {
-    options: Required<ThemeOptions>
-    private _selectors: string[] = []
-    stylesheets: string[] = [] //
-    connected: boolean = false
-    elements: WeakRef<HTMLElement>[] = []
+    options: Required<ThemeOptions>;
+    private _selectors: string[] = [];
+    stylesheets: string[] = []; //
+    connected: boolean = false;
+    elements: WeakRef<HTMLElement>[] = [];
     constructor(options?: ThemeOptions) {
         this.options = Object.assign(
             {
                 id: getId(),
-                themeColor: 'light',
+                themeColor: "blue",
+                defaultThemeColor: "blue",
                 cssSelector: [],
-                size: 'medium',
+                size: "medium",
                 dark: false,
                 colorized: false,
-                radius: 'medium',
-                spacing: 'medium',
-                shadow: 'medium',
-                border: '1px',
-                primary: 'var(--auto-theme-color)', //#029cfd
-                success: '#22c55e',
-                warning: '#f59e0b',
-                danger: '#ef4444',
-                info: '#71717a',
+                radius: "medium",
+                spacing: "medium",
+                shadow: "medium",
+                border: "1px",
+                primary: "var(--auto-theme-color)",
+                success: "#22c55e",
+                warning: "#f59e0b",
+                danger: "#ef4444",
+                info: "#71717a",
                 autoConnect: true,
                 autoAttach: true,
-                docRoot: document.documentElement,
+                docRoot: globalThis.document ? document?.documentElement : undefined,
             },
             options,
-        ) as Required<ThemeOptions>
-        this._selectors = this.options.cssSelector
+        ) as Required<ThemeOptions>;
+        this._selectors = this.options.cssSelector;
         if (this.options.cssSelector && this.options.cssSelector.length === 0) {
-            this.options.cssSelector.push(`[data-theme-scope='${this.id}']`)
+            this.options.cssSelector.push(`[data-theme-scope='${this.id}']`);
         }
-        if (this.options.autoConnect) this.connect()
-        if (this.options.autoAttach) this.autoAttach()
+        if (this.options.autoConnect) this.connect();
+        if (this.options.autoAttach) this.autoAttach();
     }
     get id() {
-        return this.options.id
+        return this.options.id;
     }
     get docRoot() {
-        return this.options.docRoot as HTMLElement
+        return this.options.docRoot as HTMLElement;
     }
     get size() {
-        return this.options.size as ThemeSize
+        return this.options.size as ThemeSize;
     }
     set size(value: ThemeSize) {
-        this.options.size = value
-        if (value === 'medium') {
+        this.options.size = value;
+        if (value === "medium") {
             this._forEachElements((el) => {
-                el.removeAttribute('data-size')
-            })
+                el.removeAttribute("data-size");
+            });
         } else {
             this._forEachElements((el) => {
-                el.dataset.size = value
-            })
+                el.dataset.size = value;
+            });
         }
     }
     get dark() {
-        return this.options.dark
+        return this.options.dark;
     }
     set dark(value: boolean) {
-        this.options.dark = value
+        this.options.dark = value;
         if (value === false) {
             this._forEachElements((el) => {
-                el.removeAttribute('dark')
-            })
+                el.removeAttribute("dark");
+            });
         } else {
             this._forEachElements((el) => {
-                el.setAttribute('dark', '')
-            })
+                el.setAttribute("dark", "");
+            });
         }
     }
     get spacing(): ThemeSize {
-        return this.options.spacing
+        return this.options.spacing;
     }
     set spacing(value: ThemeSize) {
-        this.options.spacing = value
-        if (value === 'medium') {
+        this.options.spacing = value;
+        if (value === "medium") {
             this._forEachElements((el) => {
-                el.removeAttribute('data-spacing')
-            })
+                el.removeAttribute("data-spacing");
+            });
         } else {
             this._forEachElements((el) => {
-                el.dataset.spacing = value
-            })
+                el.dataset.spacing = value;
+            });
         }
     }
     get shadow() {
-        return this.options.shadow as ThemeSize
+        return this.options.shadow as ThemeSize;
     }
     set shadow(value: ThemeSize) {
-        this.options.shadow = value
-        if (value === 'medium') {
+        this.options.shadow = value;
+        if (value === "medium") {
             this._forEachElements((el) => {
-                el.removeAttribute('data-shadow')
-            })
+                el.removeAttribute("data-shadow");
+            });
         } else {
             this._forEachElements((el) => {
-                el.dataset.shadow = value
-            })
+                el.dataset.shadow = value;
+            });
         }
     }
     get colorized() {
-        return this.options.colorized
+        return this.options.colorized;
     }
     set colorized(value: boolean) {
-        this.options.colorized = value
+        this.options.colorized = value;
         if (value === false) {
             this._forEachElements((el) => {
-                el.removeAttribute('colorized')
-            })
+                el.removeAttribute("colorized");
+            });
         } else {
             this._forEachElements((el) => {
-                el.setAttribute('colorized', '')
-            })
+                el.setAttribute("colorized", "");
+            });
         }
     }
     get radius(): ThemeSize {
-        return (this.options.radius || 'medium') as ThemeSize
+        return (this.options.radius || "medium") as ThemeSize;
     }
     set radius(value: ThemeSize) {
-        this.options.radius = value
-        if (value === 'medium') {
+        this.options.radius = value;
+        if (value === "medium") {
             this._forEachElements((el) => {
-                el.removeAttribute('data-radius')
-            })
+                el.removeAttribute("data-radius");
+            });
         } else {
             this._forEachElements((el) => {
-                el.dataset.radius = value
-            })
+                el.dataset.radius = value;
+            });
         }
     }
     get themeColor(): string {
-        return this.options.themeColor || 'light'
+        return this.options.themeColor || "light";
     }
     set themeColor(value: string) {
-        if (value === 'light') {
+        if (value === "light") {
             this._forEachElements((el) => {
-                el.removeAttribute('data-theme')
-            })
+                el.removeAttribute("data-theme");
+            });
         } else {
             this._forEachElements((el) => {
-                el.dataset.theme = value in presetThemes ? presetThemes[value].color : toRGBString(value)
-            })
+                el.dataset.theme =
+                    value in presetThemes ? presetThemes[value].color : toRGBString(value);
+            });
         }
-        this.options.themeColor = value
-        this.update({ themeColor: value })
+        this.options.themeColor = value;
+        this.update({ themeColor: value });
     }
 
     private _forEachElements(callback: (el: HTMLElement) => void) {
         this.elements.forEach((elRef) => {
-            const el = elRef.deref()
+            const el = elRef.deref();
             if (el) {
-                callback(el)
+                callback(el);
             }
-        })
+        });
         // 清除已失效的元素引用
-        this.elements = this.elements.filter((elRef) => elRef.deref())
+        this.elements = this.elements.filter((elRef) => elRef.deref());
     }
     /**
      * 生成主题颜色的CSS样式字符串
      * @returns {string} 包含主题颜色变量的CSS样式字符串，支持亮色和暗色模式
      */
     protected _generateThemeColorStyles() {
-        const themeColor = this.options.themeColor
+        const themeColor = this.options.themeColor;
+        const defaultThemeSelector =
+            this.options.themeColor === this.options.defaultThemeColor ? `,:root` : "";
 
-        const darkStyleFix = toVarStyles({
-            '--k-theme-bgcolor': 'var(--k-color-theme-1)',
-            '--k-theme-bgcolor-1': 'var(--k-color-theme-0)',
-        })
-        const lightBorderFix = `:host(:not([dark])[data-theme='${themeColor}']),:root:not([dark])[data-theme='${themeColor}']{${toVarStyles(
-            {
-                '--auto-border-color': 'var(--k-theme-color-3)',
-            },
-        )}}\n:host(:not([dark])[data-theme='${themeColor}'][colorized]),:root:not([dark])[data-theme='${themeColor}'][colorized]{${toVarStyles(
-            {
-                '--auto-border-color': 'var(--k-theme-color-1)',
-            },
-        )}}`
-        return `${this._selectors}[data-theme='${themeColor}']{
-            color-scheme: light;
-            ${toVarStyles(this._createThemeColorVars(themeColor))};\n}
-            ${this._selectors}[data-theme='${themeColor}'][dark]{
-            color-scheme: dark;
-            ${toVarStyles(this._createThemeColorVars(themeColor, true))};\n${darkStyleFix}\n
-            }${lightBorderFix}`
+        return `${this._selectors.join(",")}[data-theme='${themeColor}']${defaultThemeSelector}{\n    color-scheme: light;\n${toVarStyles(this._createThemeColorVars(themeColor))};\n}\n${this._selectors.join(",")}[data-theme='${themeColor}'][dark]{\n    color-scheme: dark;\n${toVarStyles(this._createThemeColorVars(themeColor, true))};\n} `;
     }
 
     protected _injectThemeColorStyles() {
-        if (this.options.themeColor === 'light') return
-        const css = this._generateThemeColorStyles()
-        const styleId: string = `kylinbits-${this.id}-colors`
+        if (this.options.themeColor === "light") return;
+        const css = this._generateThemeColorStyles();
+        const styleId: string = `kylinbits-${this.id}-colors`;
         injectStylesheet(css, {
             id: styleId,
-        })
-        this._addStyleheetId(styleId)
-        return css
+        });
+        this._addStyleheetId(styleId);
+        return css;
     }
-
-    protected _generateLightDarkModeStyles() {
-        const lightStyles = `${this._selectors}:not([colorized]){\n${toVarStyles(lightThemeVars)}\n}\n`
-        const darkStyles = `${this._selectors}[dark]:not([colorized]){\n${toVarStyles(darkThemeVars)}\n}\n`
-        return lightStyles + darkStyles
-    }
-    protected _injectLightDarkModeStyles() {
-        const css = this._generateLightDarkModeStyles()
-        const styleId: string = `kylinbits-${this.id}-mode`
-        injectStylesheet(css, {
-            id: styleId,
-        })
-        this._addStyleheetId(styleId)
-        return css
-    }
-    /**
-     * 获取默认主题的样式字符串
-     * @returns {string} 包含CSS变量和颜色模式的主题样式字符串
-     * @private
-     */
-    protected _generateDefaultThemeColorStyles(themeColor: string) {
-        const lightSelector = mapCssSelector(this._selectors, { light: '' }, true)
-        const darkSelector = mapCssSelector(this._selectors, { light: '', dark: '' })
-        const darkSelector2 = mapCssSelector(this._selectors, { dark: '' })
-        const lightBorderFixs = `:host(:not([data-theme]):not([dark])),:root:not([data-theme]):not([dark]){${toVarStyles(
-            {
-                '--auto-border-color': 'var(--k-theme-color-3)',
-            },
-        )}}\n`
-        return `${lightSelector}{\ncolor-scheme: light;\n${toVarStyles(this._createThemeColorVars(themeColor))}\n}\n
-        ${darkSelector2},${darkSelector}{\ncolor-scheme: dark;\n${toVarStyles(this._createThemeColorVars(themeColor, true))}\n}\n          
-        ${lightBorderFixs}      
-        `
-    }
-
     /**
      * 创建语义化颜色样式并注入到页面中
      * @param {boolean} [inject=true] - 是否立即将样式注入到页面
@@ -269,15 +219,15 @@ export class ThemeScope {
      * @private
      */
     protected _injectSemanticColorStyles() {
-        const styleId = `kylinbits-${this.id}-semantics`
-        const css = this._generateSemanticColorStyles()
+        const styleId = `kylinbits-${this.id}-semantics`;
+        const css = this._generateSemanticColorStyles();
         if (css) {
             injectStylesheet(css, {
                 id: styleId,
-            })
-            this._addStyleheetId(styleId)
+            });
+            this._addStyleheetId(styleId);
         }
-        return css
+        return css;
     }
     /**
      * 创建语义化颜色样式并注入到页面中
@@ -286,21 +236,21 @@ export class ThemeScope {
      */
     protected _generateSemanticColorStyles() {
         const vars: Record<string, string> = {
-            '--k-color-primary': this.options.primary,
-            '--k-color-success': this.options.success,
-            '--k-color-warning': this.options.warning,
-            '--k-color-danger': this.options.danger,
-            '--k-color-info': this.options.info,
-        }
+            "--k-color-primary": this.options.primary,
+            "--k-color-success": this.options.success,
+            "--k-color-warning": this.options.warning,
+            "--k-color-danger": this.options.danger,
+            "--k-color-info": this.options.info,
+        };
         const isOverride = !!(
             this.options.primary ||
             this.options.success ||
             this.options.warning ||
             this.options.danger ||
             this.options.info
-        )
-        if (!isOverride) return
-        return `${this._selectors}{\n${toVarStyles(vars)}}\n`
+        );
+        if (!isOverride) return;
+        return `${this._selectors.join(",")}{\n${toVarStyles(vars)}\n}\n`;
     }
 
     /**
@@ -309,28 +259,31 @@ export class ThemeScope {
      * @param {boolean} [reverse=false] - 是否反转渐变颜色顺序
      * @returns {Record<string, string>} 包含主题颜色CSS变量的对象
      */
-    protected _createThemeColorVars(color: string = this.options.themeColor, reverse: boolean = false) {
-        const themeColor = color in presetThemes ? presetThemes[color].color : color
+    protected _createThemeColorVars(
+        color: string = this.options.themeColor,
+        reverse: boolean = false,
+    ) {
+        const themeColor = color in presetThemes ? presetThemes[color].color : color;
         const vars: Record<string, string> = generateThemeColorVars(themeColor, {
-            prefix: '--k-color-theme-',
+            prefix: "--k-color-theme-",
             reverse,
-        })
-        return vars
+        });
+        return vars;
     }
     protected _addStyleheetId(id: string) {
         if (!this.stylesheets.includes(id)) {
-            this.stylesheets.push(id)
+            this.stylesheets.push(id);
         }
     }
     protected _generateBaseStyles() {
-        const baseStyles = `${this._selectors}{\n${toVarStyles(baseVars)}\n${toVarStyles(derivedVars)}\n}\n`
-        const sizeStyles = getVarsStyles(sizeVars, this._selectors, 'data-size')
-        const radiusStyles = getVarsStyles(radiusVars, this._selectors, 'data-radius')
-        const spacingStyles = getVarsStyles(spacingVars, this._selectors, 'data-spacing')
-        const shadowStyles = getVarsStyles(shadowVars, this._selectors, 'data-shadow')
-        const defaultThemeStyles = this._generateDefaultThemeColorStyles(presetThemes.light.color)
-        return `${baseStyles}\n${sizeStyles}\n${radiusStyles}\n${spacingStyles}\n${shadowStyles}\n${defaultThemeStyles}`
+        const baseStyles = `${this._selectors.join(",")}{\n${toVarStyles(baseVars)}\n${toVarStyles(lightColorVars)}\n${toVarStyles(lightColorizedColorVars)}\n${toVarStyles(derivedVars)}}}\n`;
+        const sizeStyles = getVarsStyles(sizeVars, this._selectors, "data-size");
+        const radiusStyles = getVarsStyles(radiusVars, this._selectors, "data-radius");
+        const spacingStyles = getVarsStyles(spacingVars, this._selectors, "data-spacing");
+        const shadowStyles = getVarsStyles(shadowVars, this._selectors, "data-shadow");
+        return `${baseStyles}\n${sizeStyles}\n${radiusStyles}\n${spacingStyles}\n${shadowStyles}\n`;
     }
+
     /**
      * 注入主题基础样式到页面中
      * @param {boolean} [inject=true] - 是否立即将样式注入到页面中
@@ -338,34 +291,41 @@ export class ThemeScope {
      * @private
      */
     private _injectBaseStyles() {
-        const styleId = `kylinbits-${this.id}-vars`
-        const css = this._generateBaseStyles()
-        injectStylesheet(css, { id: styleId })
-        this._addStyleheetId(styleId)
-        return css
+        const styleId = `kylinbits-${this.id}-vars`;
+        const css = this._generateBaseStyles();
+        injectStylesheet(css, { id: styleId });
+        this._addStyleheetId(styleId);
+        return css;
     }
     /**
      * 更新主题
      */
     update(options: Partial<DynamicThemeOptions>) {
-        const { themeColor } = options
+        const { themeColor } = options;
         if (themeColor) {
             this.options.themeColor =
-                themeColor in presetThemes ? presetThemes[themeColor].color : toRGBString(themeColor)
-            this._injectThemeColorStyles()
-        } else if (options.primary || options.success || options.warning || options.danger || options.info) {
-            Object.assign(this.options, options)
-            this._injectSemanticColorStyles()
+                themeColor in presetThemes
+                    ? presetThemes[themeColor].color
+                    : toRGBString(themeColor);
+            this._injectThemeColorStyles();
+        } else if (
+            options.primary ||
+            options.success ||
+            options.warning ||
+            options.danger ||
+            options.info
+        ) {
+            Object.assign(this.options, options);
+            this._injectSemanticColorStyles();
         }
     }
     connect() {
-        if (this.connected) return
-        this._injectBaseStyles()
-        this._injectLightDarkModeStyles()
-        this._injectThemeColorStyles()
-        this._injectSemanticColorStyles()
-        this._applyToElements()
-        this.connected = true
+        if (this.connected) return;
+        this._injectBaseStyles();
+        this._injectThemeColorStyles();
+        this._injectSemanticColorStyles();
+        this._applyToElements();
+        this.connected = true;
     }
     /**
      * 将主题样式应用到匹配选择器的所有元素
@@ -373,23 +333,23 @@ export class ThemeScope {
      * @throws {TypeError} 如果元素不是HTMLElement实例
      */
     private _applyToElements() {
-        const selectors = this.options.elements || []
+        const selectors = this.options.elements || [];
         selectors.forEach((selector) => {
-            const els = this.docRoot.querySelectorAll(selector)
+            const els = this.docRoot.querySelectorAll(selector);
             for (let i = 0; i < els.length; i++) {
-                const el = els[i]
-                if (el && el instanceof HTMLElement) this.attach(el)
+                const el = els[i];
+                if (el && el instanceof HTMLElement) this.attach(el);
             }
-        })
+        });
     }
     disconnect() {
         this.stylesheets.forEach((id) => {
-            const style = document.getElementById(id)
+            const style = document.getElementById(id);
             if (style) {
-                style.remove()
+                style.remove();
             }
-        })
-        this.connected = false
+        });
+        this.connected = false;
     }
     isConnected() {
         const styleIds: string[] = [
@@ -397,37 +357,37 @@ export class ThemeScope {
             `kylinbits-${this.id}-semantics`,
             `kylinbits-${this.id}-colors`,
             `kylinbits-${this.id}-mode`,
-        ]
-        return styleIds.some((id) => this.docRoot.ownerDocument.getElementById(id) !== null)
+        ];
+        return styleIds.some((id) => this.docRoot.ownerDocument.getElementById(id) !== null);
     }
     /**
      * 生成所有需要注入的css样式
      */
     toStyles() {
-        return `${this._generateBaseStyles()}${this._injectLightDarkModeStyles()}${this._generateSemanticColorStyles()}${this._generateDefaultThemeColorStyles(presetThemes.light.color)}${this._generateThemeColorStyles()}`
+        return `${this._generateBaseStyles()}${this._generateSemanticColorStyles()}${this._generateThemeColorStyles()}`;
     }
     download() {
         // 创建 Blob 对象
-        const blob = new Blob([this.toStyles()], { type: 'text/plain' })
+        const blob = new Blob([this.toStyles()], { type: "text/plain" });
         // 创建临时 URL
-        const url = URL.createObjectURL(blob)
+        const url = URL.createObjectURL(blob);
         // 创建隐藏的下载链接
-        const a = document.createElement('a')
-        a.href = url
-        a.download = `themepro_${this.id}.css`
-        a.style.display = 'none'
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `kylinbits_${this.id}.css`;
+        a.style.display = "none";
         // 添加到文档并触发点击
-        document.body.appendChild(a)
-        a.click()
+        document.body.appendChild(a);
+        a.click();
         // 清理资源
-        document.body.removeChild(a)
-        URL.revokeObjectURL(url)
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
     }
     autoAttach() {
-        const scopeEls = this.docRoot.querySelectorAll(`[data-theme-scope='${this.id}']`)
+        const scopeEls = this.docRoot.querySelectorAll(`[data-theme-scope='${this.id}']`);
         for (const el of scopeEls) {
-            if (!(el instanceof HTMLElement)) continue
-            this.attach(el)
+            if (!(el instanceof HTMLElement)) continue;
+            this.attach(el);
         }
     }
     /**
@@ -435,14 +395,17 @@ export class ThemeScope {
      * @param {string | HTMLElement} selector - CSS选择器字符串或HTMLElement元素
      */
     attach(selector: string | HTMLElement) {
-        const els = typeof selector === 'string' ? document.querySelectorAll(selector) : [selector]
+        const els = typeof selector === "string" ? document.querySelectorAll(selector) : [selector];
         for (const el of els) {
             if (el && el instanceof HTMLElement) {
                 if (el !== document.documentElement) {
-                    el.setAttribute('data-theme-scope', this.id)
+                    el.setAttribute("data-theme-scope", this.id);
                 }
-                if (this.elements.length === 0 || !this.elements.every((elRef) => elRef.deref() === el)) {
-                    this.elements.push(new WeakRef(el))
+                if (
+                    this.elements.length === 0 ||
+                    !this.elements.every((elRef) => elRef.deref() === el)
+                ) {
+                    this.elements.push(new WeakRef(el));
                 }
             }
         }
@@ -453,12 +416,15 @@ export class ThemeScope {
      * @returns {void}
      */
     detach(selector: string | HTMLElement) {
-        const els = typeof selector === 'string' ? document.querySelectorAll(selector) : [selector]
+        const els = typeof selector === "string" ? document.querySelectorAll(selector) : [selector];
         for (const el of els) {
             if (el && el instanceof HTMLElement) {
-                el.removeAttribute('data-theme-scope')
-                this.elements = this.elements.filter((ref) => ref.deref() !== el)
+                el.removeAttribute("data-theme-scope");
+                this.elements = this.elements.filter((ref) => ref.deref() !== el);
             }
         }
+    }
+    generate() {
+        return `${this._generateBaseStyles()}\n/* colors */\n ${this._generateThemeColorStyles()}\n/*  Semantic Colors */\n${this._generateSemanticColorStyles()}`;
     }
 }

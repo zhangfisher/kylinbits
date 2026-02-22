@@ -9,13 +9,9 @@ export type PresetTheme = {
 }
 
 export const presetThemes: Record<string, PresetTheme> = {
-    light: {
-        color: '#c6c6c6',
-        title: '默认',
-    },
-    dark: {
-        color: '#030303',
-        title: '暗黑',
+    blue: {
+        color: '#1677ff',
+        title: '拂晓蓝',
     },
     red: {
         color: '#f5222d',
@@ -49,10 +45,7 @@ export const presetThemes: Record<string, PresetTheme> = {
         color: '#13c2c2',
         title: '明青',
     },
-    blue: {
-        color: '#1677ff',
-        title: '拂晓蓝',
-    },
+    
     geekblue: {
         color: '#2f54eb',
         title: '极客蓝',
