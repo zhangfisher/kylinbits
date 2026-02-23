@@ -1,28 +1,152 @@
 .auto-input {
     background: var(--auto-input-bgcolor);
     border: var(--auto-input-border);
-    padding: var(--auto-input-padding);
+    padding: calc(0.5 * var(--auto-input-padding)) var(--auto-input-padding);
     border-radius: var(--auto-border-radius);
     accent-color: var(--auto-primary-color);
     font: var(--auto-font);
+    width: 100%;
 
     &:hover {
         border: var(--auto-active-border);
-        transition: all 0.5s ease-in;
+        transition: all 0.3s ease-in;
     }
 
     &:focus {
         outline: none;
         background: var(--k-theme-bgcolor-1);
+        transition: all 0.5s ease-in;
     }
 
 
     &::placeholder {
-        color: var(--auto-border-color);
+        color: var(--auto-secondary-color);
     }
 
     &[type=checkbox] {
         cursor: pointer;
+        width: auto;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        position: relative;
+        width: var(--auto-font-size);
+        height: var(--auto-font-size);
+        border: 1px solid var(--auto-border-color);
+        border-radius: calc(var(--auto-border-radius) * 0.5);
+        background: var(--auto-input-bgcolor);
+        transition: all 0.2s ease;
+        padding: calc(var(--auto-font-size) * 0.5);
+
+        // 选中时联动 label 样式
+        &+label,
+        &~label {
+            cursor: pointer;
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(45deg) scale(0);
+            width: calc(var(--auto-font-size) * 0.25);
+            height: calc(var(--auto-font-size) * 0.5);
+            border: solid var(--auto-primary-color);
+            border-width: 0 1px 1px 0;
+            transition: all 0.2s ease;
+        }
+
+        &:checked {
+            border-color: var(--auto-primary-color);
+            background: var(--auto-selected-bgcolor);
+
+            &::before {
+                transform: translate(-50%, -65%) rotate(45deg) scale(1);
+            }
+        }
+
+        &:hover {
+            border-color: var(--auto-hover-border-color);
+        }
+
+        &:focus {
+            outline: none;
+            border-color: var(--auto-selected-border-color);
+            box-shadow: 0 0 0 2px var(--auto-selected-bgcolor);
+        }
+
+        &:disabled {
+            border-color: var(--auto-disable-border-color);
+            background: var(--auto-disable-bgcolor);
+            cursor: not-allowed;
+
+            &::before {
+                border-color: var(--auto-disable-color);
+            }
+        }
+    }
+
+    &[type=radio] {
+        cursor: pointer;
+        width: auto;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        position: relative;
+        width: var(--auto-font-size);
+        height: var(--auto-font-size);
+        border: 1px solid var(--auto-border-color);
+        border-radius: 50%;
+        background: var(--auto-input-bgcolor);
+        transition: all 0.2s ease;
+        padding: calc(var(--auto-font-size) * 0.5);
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            width: calc(var(--auto-font-size) * 0.4);
+            height: calc(var(--auto-font-size) * 0.4);
+            background: var(--auto-primary-color);
+            border-radius: 50%;
+            transition: transform 0.2s ease;
+        }
+
+        &:checked {
+            border-color: var(--auto-primary-color);
+            background: var(--auto-selected-bgcolor);
+
+            &::before {
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        &:hover {
+            border-color: var(--auto-hover-border-color);
+        }
+
+        &:focus {
+            outline: none;
+            border-color: var(--auto-selected-border-color);
+            box-shadow: 0 0 0 2px var(--auto-selected-bgcolor);
+        }
+
+        &:disabled {
+            border-color: var(--auto-disable-border-color);
+            background: var(--auto-disable-bgcolor);
+            cursor: not-allowed;
+
+            &::before {
+                background: var(--auto-disable-color);
+            }
+        }
+
+        &~label {
+            cursor: pointer;
+        }
     }
 }
 
@@ -31,8 +155,9 @@
     display: flex;
     background: var(--auto-input-bgcolor);
     border: var(--auto-input-border);
-    padding: var(--auto-input-padding);
+    padding: calc(0.5 * var(--auto-input-padding)) var(--auto-input-padding);
     border-radius: var(--auto-border-radius);
+    width: 100%;
 
     &:hover {
         border: var(--auto-active-border);
@@ -45,6 +170,7 @@
 
     .auto-input,
     input {
+        width: 100%;
         border: none;
         padding: 0;
         border-radius: var(--auto-border-radius);
@@ -54,12 +180,196 @@
         font: var(--auto-font);
         background: transparent;
 
-        &:focus {
+        &:focus,
+        &:hover {
             outline: none;
         }
 
         &::placeholder {
-            color: var(--auto-border-color);
+            color: var(--auto-secondary-color);
+        }
+
+        // 复选框样式
+        &[type=checkbox] {
+            width: auto;
+            flex-grow: 0;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            position: relative;
+            width: var(--auto-font-size);
+            height: var(--auto-font-size);
+            border: 1px solid var(--auto-border-color);
+            border-radius: calc(var(--auto-border-radius) * 0.5);
+            background: var(--auto-input-bgcolor);
+            transition: all 0.2s ease;
+            cursor: pointer;
+            padding: calc(var(--auto-font-size) * 0.5);
+
+            // 选中时联动 label 样式
+            &+label,
+            &~label {
+                cursor: pointer;
+            }
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) rotate(45deg) scale(0);
+                width: calc(var(--auto-font-size) * 0.25);
+                height: calc(var(--auto-font-size) * 0.5);
+                border: solid var(--auto-primary-color);
+                border-width: 0 1px 1px 0;
+                transition: all 0.2s ease;
+            }
+
+            &:checked {
+                border-color: var(--auto-primary-color);
+                background: var(--auto-selected-bgcolor);
+
+                &::before {
+                    transform: translate(-50%, -65%) rotate(45deg) scale(1);
+                }
+
+                // 选中时联动 label 样式
+                +label,
+                ~label {
+                    color: var(--auto-selected-color);
+                    font-weight: var(--auto-font-weight);
+                }
+            }
+
+            &:hover {
+                border-color: var(--auto-hover-border-color);
+
+                // hover 时联动 label 样式
+                +label,
+                ~label {
+                    color: var(--auto-hover-color);
+                }
+            }
+
+            &:focus {
+                outline: none;
+                border-color: var(--auto-selected-border-color);
+                box-shadow: 0 0 0 2px var(--auto-selected-bgcolor);
+            }
+
+            &:disabled {
+                border-color: var(--auto-disable-border-color);
+                background: var(--auto-disable-bgcolor);
+                cursor: not-allowed;
+
+                &::before {
+                    border-color: var(--auto-disable-color);
+                }
+
+                +label,
+                ~label {
+                    color: var(--auto-disable-color);
+                    cursor: not-allowed;
+                }
+            }
+        }
+
+        // 单选框样式
+        &[type=radio] {
+            width: auto;
+            flex-grow: 0;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            position: relative;
+            width: var(--auto-font-size);
+            height: var(--auto-font-size);
+            border: 1px solid var(--auto-border-color);
+            border-radius: 50%;
+            background: var(--auto-input-bgcolor);
+            transition: all 0.2s ease;
+            cursor: pointer;
+            padding: calc(var(--auto-font-size) * 0.5);
+
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) scale(0);
+                width: calc(var(--auto-font-size) * 0.4);
+                height: calc(var(--auto-font-size) * 0.4);
+                background: var(--auto-primary-color);
+                border-radius: 50%;
+                transition: transform 0.2s ease;
+            }
+
+            &:checked {
+                border-color: var(--auto-primary-color);
+                background: var(--auto-selected-bgcolor);
+
+                &::before {
+                    transform: translate(-50%, -50%) scale(1);
+                }
+
+                // 选中时联动 label 样式
+                +label,
+                ~label {
+                    color: var(--auto-selected-color);
+                    font-weight: var(--auto-font-weight);
+                }
+            }
+
+            &:hover {
+                border-color: var(--auto-hover-border-color);
+
+                // hover 时联动 label 样式
+                +label,
+                ~label {
+                    color: var(--auto-hover-color);
+                }
+            }
+
+            &:focus {
+                outline: none;
+                border-color: var(--auto-selected-border-color);
+                box-shadow: 0 0 0 2px var(--auto-selected-bgcolor);
+            }
+
+            &:disabled {
+                border-color: var(--auto-disable-border-color);
+                background: var(--auto-disable-bgcolor);
+                cursor: not-allowed;
+
+                &::before {
+                    background: var(--auto-disable-color);
+                }
+
+                +label,
+                ~label {
+                    color: var(--auto-disable-color);
+                    cursor: not-allowed;
+                }
+            }
+        }
+    }
+
+    // label 样式联动
+    label {
+        cursor: pointer;
+        transition: all 0.2s ease;
+        user-select: none;
+
+        &:hover {
+            color: var(--auto-hover-color);
+            cursor: pointer;
+        }
+
+        // 当 label 关联的输入框禁用时，label 也显示禁用状态
+        input:disabled+&,
+        input:disabled~& {
+            cursor: not-allowed;
         }
     }
 }

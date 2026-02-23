@@ -1,8 +1,9 @@
 @charset "utf-8";
 
+html,
 body {
     color: var(--auto-color);
-    background: var(--auto-bgcolor);
+    background: var(--k-bgcolor-1);
     line-height: var(--auto-line-height);
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
@@ -86,13 +87,13 @@ video {
 
 /* 所有主流浏览器 */
 ::selection {
-    background-color: var(--k-color-theme-1);
+    background-color: color-mix(in srgb, var(--k-color-theme-1), transparent 50%) !important;
     color: var(--k-color-theme-6);
 }
 
 ::-moz-selection {
-    background-color: var(--k-color-theme-2);
-    color: var(--k-theme-color);
+    background-color: color-mix(in srgb, var(--k-color-theme-1), transparent 50%) !important;
+    color: var(--k-color-theme-6);
     /* WebKit/Blink Browsers */
 }
 

@@ -148,9 +148,9 @@ button {
     width: 100%;
 }
 
-.auto-card-body-item:hover {
+/* .auto-card-body-item:hover {
     background: var(--auto-hover-bgcolor);
-}
+} */
 
 .auto-card-body-item.center {
     justify-content: center;

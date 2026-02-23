@@ -10,39 +10,47 @@ export const derivedVars = {
     /** 活动颜色 */
     "--auto-selected-color": "var(--k-color-theme-5)!important",
     "--auto-selected-bgcolor":
-        "color-mix(in srgb, var(--auto-selected-color), transparent 90% )!important",
+        "color-mix(in srgb, var(--auto-selected-color), transparent 80% )!important",
 
     "--auto-hover-color": "var(--auto-theme-color)!important",
     "--auto-hover-bgcolor":
         "color-mix(in srgb, var(--auto-hover-color), transparent 85%)!important",
 
-    "--auto-active-color": "var(--auto-color)!important",
-    "--auto-active-bgcolor": "var(--k-color-theme-2)!important",
+    "--auto-active-color": "var(--k-color-theme-8)!important",
+    "--auto-active-bgcolor":
+        "color-mix(in srgb, var(--auto-active-color), transparent 85%)!important",
 
-    "--auto-disable-color": "color-mix(in srgb, var(--k-color-8), gray 30%)!important",
+    "--auto-disable-color": "color-mix(in srgb, var(--k-color-8), gray 50%)!important",
     "--auto-disable-bgcolor": "color-mix(in srgb, currentColor, transparent 60%)!important",
 
     /* 字体颜色 */
-    "--auto-color": "var(--k-color-2)",
+    "--auto-color": "var(--k-color-1)",
     "--auto-secondary-color": "var(--k-color-5)",
 
     /* 背景颜色: 用于面板/对话框/组件的背景 */
     "--auto-bgcolor": "var(--k-bgcolor-0)",
+    "--auto-secondary-bgcolor": "color-mix(in srgb, var(--k-bgcolor-1), transparent 50%)!important",
     "--auto-workspace-bgcolor": "var(--k-bgcolor-1)",
 
     /* 边框 */
     "--auto-border-size": "1px",
-    "--auto-border-color": "var(--k-color-6)",
+    "--auto-border-color": "var(--k-color-7)",
     "--auto-border": "var(--auto-border-size) solid var(--auto-border-color)",
+    // hover
+    "--auto-hover-border-color": "var(--auto-hover-color)",
+    "--auto-hover-border": "1px solid var(--auto-hover-border-color)",
+    // selected
     "--auto-selected-border-color": "var(--auto-selected-color)",
     "--auto-selected-border": "1px solid var(--auto-selected-border-color)",
-    "--auto-active-border-color": "var(--k-color-5)",
+    // active
+    "--auto-active-border-color": "var(--auto-active-color)",
     "--auto-active-border": "1px solid var(--auto-active-border-color)",
+    // disable
     "--auto-disable-border-color": "var(--auto-disable-color)",
     "--auto-disable-border": "1px solid var(--auto-disable-border-color)",
 
     /* 排版/字体 */
-    "--auto-font": "var(--auto-font-weight) var(--auto-font-size)/1.5 var(--auto-font-family)",
+    "--auto-font": "var(--k-font-weight-medium) var(--auto-font-size)/1.5 var(--auto-font-family)",
     "--auto-font-family":
         "Lantinghei SC,Microsoft Yahei,Hiragino Sans GB,Microsoft Sans Serif,WenQuanYi Micro Hei,sans-serif",
     "--auto-font-size": "var(--k-font-size-medium)",
@@ -50,11 +58,13 @@ export const derivedVars = {
     "--auto-letter-spacing": "var(--k-letter-spacing-medium)",
     "--auto-line-height": "var(--k-line-height-medium)",
     "--auto-title-font":
-        "calc(var(--auto-font-weight) + 200) calc(var(--auto-font-size) * 1.1)/1.5 var(--auto-font-family)",
+        "calc(var(--auto-font-weight) + 200) calc(var(--auto-font-size) * 1.05)/1.5 var(--auto-font-family)",
+
     /* 面板: 用于导航/标题栏/标签页标题 */
-    "--auto-panel-header-color": "var(--k-color-theme-8)",
+    "--auto-panel-header-color": "var(--auto-color)",
+    "--auto-panel-header": "var(--auto-title-font)",
     /** 标题背景颜色：用于标题/标题栏的背景颜色*/
-    "--auto-panel-header-bgcolor": "color-mix(in hsl, var(--auto-bgcolor), black 3%)",
+    "--auto-panel-header-bgcolor": "var(--auto-secondary-bgcolor)",
     /* 面板背景颜色：用于面板/区块/Drawer等背景颜色*/
     "--auto-panel-bgcolor": "var(--auto-bgcolor)",
 
@@ -67,11 +77,12 @@ export const derivedVars = {
 
     /* 输入框 */
     /** 输入框背景颜色：用于输入框背景颜色*/
-    "--auto-input-border": "1px solid var(--k-theme-color-3)",
-    "--auto-input-bgcolor": "var(--k-theme-bgcolor)",
-    "--auto-input-padding": "calc(0.5 * var(--auto-padding))",
+    "--auto-input-font": "var(--auto-font)",
+    "--auto-input-border": "var(--auto-border)",
+    "--auto-input-bgcolor": "var(--auto-bgcolor)",
+    "--auto-input-padding": "var(--auto-padding)",
     "--auto-input-radius": "var(--auto-border-radius)",
-    "--auto-input-height": "var(--k-line-height-medium)",
+    "--auto-input-height": "var(--auto-line-height)",
     /** 其他 */
     "--auto-icon-size": "var(--k-icon-size-medium)",
 };
