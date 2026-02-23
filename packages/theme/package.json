@@ -1,7 +1,6 @@
 {
 	"name": "@kylinbits/theme",
 	"module": "src/index.ts",
-	"type": "module",
 	"version": "1.0.7",
 	"repository": {
 		"type": "git",
@@ -49,7 +48,6 @@
 		"vitepress": "^1.6.4",
 		"vitepress-demo-plugin": "^1.5.1"
 	},
-	"peerDependencies": {},
 	"dependencies": {
 		"@ant-design/fast-color": "^3.0.0",
 		"@yosulramp/material-color-palette-js": "^1.0.4"

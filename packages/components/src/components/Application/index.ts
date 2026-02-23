@@ -2,13 +2,10 @@ import { customElement } from "lit/decorators/custom-element.js";
 import { html } from "lit";
 import { KylinStateElement } from "../../elements/state";
 import { TooltipController } from "../../controllers/tooltip/controller";
-import type {
-    TooltipControllerOptions,
-    TooltipOptions,
-} from "../../controllers/tooltip/types";
+import type { TooltipControllerOptions, TooltipOptions } from "../../controllers/tooltip/types";
 import { styles } from "./styles";
 
-export interface KylinApplicationrops {
+export interface KylinApplicationProps {
     tooltip?: TooltipOptions;
 }
 /**a
@@ -30,7 +27,7 @@ export interface KylinApplicationrops {
  * ```
  */
 @customElement("kylin-application")
-export class KylinApplication extends KylinStateElement<KylinApplicationrops> {
+export class KylinApplication extends KylinStateElement<KylinApplicationProps> {
     static styles = styles;
 
     /**
@@ -60,7 +57,7 @@ export class KylinApplication extends KylinStateElement<KylinApplicationrops> {
      */
     private _createTooltipController(): void {
         const options: TooltipControllerOptions = {
-            ...(this.state.tooltip ?? {}),
+            ...this.state.tooltip,
             dataPrefix: "tooltip",
         };
         this._tooltipController = new TooltipController(this, options);
@@ -71,7 +68,9 @@ export class KylinApplication extends KylinStateElement<KylinApplicationrops> {
      */
     render() {
         // 将内容传递给子元素
-        return html` <slot></slot> `;
+        return html`
+            <slot></slot>
+        `;
     }
 }
 

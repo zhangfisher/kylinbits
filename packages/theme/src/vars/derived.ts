@@ -26,10 +26,12 @@ export const derivedVars = {
     /* 字体颜色 */
     "--auto-color": "var(--k-color-1)",
     "--auto-secondary-color": "var(--k-color-5)",
+    "--auto-third-color": "var(--k-color-6)",
 
     /* 背景颜色: 用于面板/对话框/组件的背景 */
     "--auto-bgcolor": "var(--k-bgcolor-0)",
-    "--auto-secondary-bgcolor": "color-mix(in srgb, var(--k-bgcolor-1), transparent 50%)!important",
+    "--auto-secondary-bgcolor": "color-mix(in srgb, var(--k-bgcolor-1), transparent 70%)!important",
+    "--auto-third-bgcolor": "color-mix(in srgb, var(--k-bgcolor-1), transparent 80%)!important",
     "--auto-workspace-bgcolor": "var(--k-bgcolor-1)",
 
     /* 边框 */
@@ -61,12 +63,12 @@ export const derivedVars = {
         "calc(var(--auto-font-weight) + 200) calc(var(--auto-font-size) * 1.05)/1.5 var(--auto-font-family)",
 
     /* 面板: 用于导航/标题栏/标签页标题 */
-    "--auto-panel-header-color": "var(--auto-color)",
-    "--auto-panel-header": "var(--auto-title-font)",
+    "--auto-card-header-color": "var(--auto-color)",
+    "--auto-card-header": "var(--auto-title-font)",
     /** 标题背景颜色：用于标题/标题栏的背景颜色*/
-    "--auto-panel-header-bgcolor": "var(--auto-secondary-bgcolor)",
+    "--auto-card-header-bgcolor": "var(--auto-secondary-bgcolor)",
     /* 面板背景颜色：用于面板/区块/Drawer等背景颜色*/
-    "--auto-panel-bgcolor": "var(--auto-bgcolor)",
+    "--auto-card-bgcolor": "var(--auto-bgcolor)",
 
     /* 边框/间距 */
     "--auto-border-radius": "var(--k-border-radius-medium)",

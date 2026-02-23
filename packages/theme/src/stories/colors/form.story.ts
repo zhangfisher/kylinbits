@@ -50,7 +50,7 @@ export const renderFormStory = () => {
             <div class="auto-card">
                 <div class="auto-card-header">用法一：直接使用 .auto-input 类</div>
                 <div class="auto-card-body col">
-                    <div class="auto-card-body-item">
+                    <div class="auto-card-body-item" style="border:none;background:var(--auto-third-bgcolor)">
                         <label class="form-label">
                             默认状态
                         </label>

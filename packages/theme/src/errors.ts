@@ -1,2 +1,2 @@
-export class ThemeProError extends Error {}
-export class ThemeProNotConnectedError extends ThemeProError {}
+export class KylinBitsThemeError extends Error {}
+export class KylinBitsThemeProNotConnectedError extends KylinBitsThemeError {}

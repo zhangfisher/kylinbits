@@ -148,6 +148,135 @@
             cursor: pointer;
         }
     }
+
+    &[type=range] {
+        cursor: pointer;
+        width: 100%;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background: transparent;
+        font: var(--auto-font);
+
+        // 滑块轨道
+        &::-webkit-slider-runnable-track {
+            height: 0px;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        &::-moz-range-track {
+            width: 100%;
+            height: calc(0.5 *var(--auto-font-size));
+            background: var(--auto-theme-color);
+            border: var(--auto-input-border);
+            border-radius: var(--auto-border-radius);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        // 滑块拇指
+        &::-webkit-slider-thumb {
+            appearance: none;
+            -webkit-appearance: none;
+            width: var(--auto-font-size);
+            height: var(--auto-font-size);
+            background: var(--auto-primary-color);
+            border: 1px solid white;
+            outline: 1px solid var(--auto-primary-color);
+            border-radius: 50%;
+            cursor: pointer;
+            margin-top: calc(-0.5*var(--auto-font-size));
+            transition: all 0.2s ease;
+
+            &:hover {
+                background: var(--auto-hover-color);
+                transform: scale(1.1);
+            }
+        }
+
+        &::-moz-range-thumb {
+            appearance: none;
+            -moz-appearance: none;
+            width: var(--auto-font-size);
+            height: var(--auto-font-size);
+            background: var(--auto-primary-color);
+            border: 1px solid var(--auto-border-color);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.2s ease;
+
+            &:hover {
+                background: var(--auto-hover-color);
+                transform: scale(1.1);
+            }
+        }
+
+        // focus 状态
+        &:focus {
+            outline: none;
+
+            &::-webkit-slider-thumb {
+                box-shadow: 0 0 0 2px var(--auto-selected-bgcolor);
+                border-color: var(--auto-selected-border-color);
+            }
+
+            &::-moz-range-thumb {
+                box-shadow: 0 0 0 2px var(--auto-selected-bgcolor);
+                border-color: var(--auto-selected-border-color);
+            }
+
+            &::after {
+                border-color: var(--auto-selected-border-color);
+                color: var(--auto-selected-color);
+            }
+        }
+
+        // hover 状态 - 轨道和值
+        &:hover {
+            &::-webkit-slider-runnable-track {
+                border-color: var(--auto-hover-border-color);
+            }
+
+            &::-moz-range-track {
+                border-color: var(--auto-hover-border-color);
+            }
+
+        }
+    }
+
+    // disabled 状态
+    &:disabled {
+        cursor: not-allowed;
+        opacity: 0.6;
+
+        &::-webkit-slider-thumb {
+            background: var(--auto-disable-color);
+            cursor: not-allowed;
+        }
+
+        &::-moz-range-thumb {
+            background: var(--auto-disable-color);
+            cursor: not-allowed;
+        }
+
+        &::-webkit-slider-runnable-track {
+            border-color: var(--auto-disable-border-color);
+            background: var(--auto-disable-bgcolor);
+        }
+
+        &::-moz-range-track {
+            border-color: var(--auto-disable-border-color);
+            background: var(--auto-disable-bgcolor);
+        }
+
+        &::after {
+            color: var(--auto-disable-color);
+            border-color: var(--auto-disable-border-color);
+            background: var(--auto-disable-bgcolor);
+        }
+    }
 }
 
 // 用来提供一个包含input的容器
@@ -350,6 +479,154 @@
                 ~label {
                     color: var(--auto-disable-color);
                     cursor: not-allowed;
+                }
+            }
+        }
+
+        // 滑块样式
+        &[type=range] {
+            width: 100%;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background: transparent;
+            font: var(--auto-font);
+            flex-grow: 1;
+            position: relative;
+
+            // 显示值的伪元素
+            &::after {
+                content: attr(value);
+                position: absolute;
+                bottom: calc(var(--auto-font-size) * 0.7);
+                left: calc((attr(value) - attr(min)) / (attr(max) - attr(min)) * 100%);
+                transform: translateX(-50%);
+                font: var(--auto-font);
+                font-size: calc(var(--auto-font-size) * 0.75);
+                color: var(--auto-color);
+                pointer-events: none;
+                transition: left 0.1s ease, all 0.2s ease;
+                white-space: nowrap;
+            }
+
+            // 滑块轨道
+            &::-webkit-slider-runnable-track {
+                width: 100%;
+                height: calc(var(--auto-font-size) * 0.5);
+                background: var(--auto-input-bgcolor);
+                border: var(--auto-input-border);
+                border-radius: var(--auto-border-radius);
+                cursor: pointer;
+                transition: all 0.2s ease;
+            }
+
+            &::-moz-range-track {
+                width: 100%;
+                height: calc(var(--auto-font-size) * 0.5);
+                background: var(--auto-input-bgcolor);
+                border: var(--auto-input-border);
+                border-radius: var(--auto-border-radius);
+                cursor: pointer;
+                transition: all 0.2s ease;
+            }
+
+            // 滑块拇指
+            &::-webkit-slider-thumb {
+                appearance: none;
+                -webkit-appearance: none;
+                width: var(--auto-font-size);
+                height: var(--auto-font-size);
+                background: var(--auto-primary-color);
+                border: 1px solid var(--auto-border-color);
+                border-radius: 50%;
+                cursor: pointer;
+                margin-top: 0;
+                transition: all 0.2s ease;
+
+                &:hover {
+                    background: var(--auto-hover-color);
+                    transform: scale(1.1);
+                }
+            }
+
+            &::-moz-range-thumb {
+                appearance: none;
+                -moz-appearance: none;
+                width: var(--auto-font-size);
+                height: var(--auto-font-size);
+                background: var(--auto-primary-color);
+                border: 1px solid var(--auto-border-color);
+                border-radius: 50%;
+                cursor: pointer;
+                transition: all 0.2s ease;
+
+                &:hover {
+                    background: var(--auto-hover-color);
+                    transform: scale(1.1);
+                }
+            }
+
+            // focus 状态
+            &:focus {
+                outline: none;
+
+                &::-webkit-slider-thumb {
+                    box-shadow: 0 0 0 2px var(--auto-selected-bgcolor);
+                    border-color: var(--auto-selected-border-color);
+                }
+
+                &::-moz-range-thumb {
+                    box-shadow: 0 0 0 2px var(--auto-selected-bgcolor);
+                    border-color: var(--auto-selected-border-color);
+                }
+
+                &::after {
+                    color: var(--auto-selected-color);
+                }
+            }
+
+            // hover 状态
+            &:hover {
+                &::-webkit-slider-runnable-track {
+                    border-color: var(--auto-hover-border-color);
+                }
+
+                &::-moz-range-track {
+                    border-color: var(--auto-hover-border-color);
+                }
+
+                &::after {
+                    color: var(--auto-hover-color);
+                }
+            }
+
+            // disabled 状态
+            &:disabled {
+                cursor: not-allowed;
+                opacity: 0.6;
+
+                &::-webkit-slider-thumb {
+                    background: var(--auto-disable-color);
+                    cursor: not-allowed;
+                }
+
+                &::-moz-range-thumb {
+                    background: var(--auto-disable-color);
+                    cursor: not-allowed;
+                }
+
+                &::-webkit-slider-runnable-track {
+                    border-color: var(--auto-disable-border-color);
+                    background: var(--auto-disable-bgcolor);
+                }
+
+                &::-moz-range-track {
+                    border-color: var(--auto-disable-border-color);
+                    background: var(--auto-disable-bgcolor);
+                }
+
+                &::after {
+                    color: var(--auto-disable-color);
                 }
             }
         }

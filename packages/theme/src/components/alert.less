@@ -7,8 +7,8 @@
     display: flex;
     flex-direction: column;
     font-size: var(--auto-font-size);
-    padding: var(--auto-spacing);
-    background: var(--auto-panel-bgcolor);
+    padding: calc(1.5 * var(--auto-spacing));
+    background: var(--auto-bgcolor);
     border: var(--auto-border);
     color: var(--auto-color);
     padding-left: calc(3em + var(--auto-spacing));
@@ -28,7 +28,7 @@
 
     &>.title {
         font: var(--auto-title-font);
-        color: var(--auto-panel-header-color);
+        color: var(--auto-card-header-color);
         display: flex;
         align-items: center;
         padding-bottom: calc(0.5 * var(--auto-spacing));
@@ -100,7 +100,7 @@
 :host([dark]),
 [dark] {
     .auto-alert {
-        background: var(--auto-panel-bgcolor);
+        background: var(--auto-card-bgcolor);
         border: var(--auto-border);
         color: var(--auto-color);
 

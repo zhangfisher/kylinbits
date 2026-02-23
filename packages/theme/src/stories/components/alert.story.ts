@@ -1,5 +1,5 @@
-import { html } from 'lit'
-import { themeSelector } from '../_components'
+import { html } from "lit";
+import { themeSelector } from "../_components";
 
 export const renderAlertStory = () => {
     return html`
@@ -8,7 +8,7 @@ export const renderAlertStory = () => {
                 <div class="auto-card-header">简单提示信息</div>
                 <div class="auto-card-body col">                                
                     <div class="auto-alert">
-                        这是一条提示信息
+                        这是一条普通提示信息
                     </div> 
                     <div class="auto-alert success">
                         这是一条成功信息 success
@@ -45,5 +45,5 @@ export const renderAlertStory = () => {
             </div>
             </div>
               
-        `
-}
+        `;
+};

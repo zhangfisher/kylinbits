@@ -3,25 +3,29 @@
     display: flex;
     position: relative;
     flex-direction: column;
-    background: var(--auto-panel-bgcolor);
+    background: var(--auto-card-bgcolor);
     color: var(--auto-color);
     border-radius: var(--auto-border-radius);
     box-shadow: var(--auto-shadow);
-    border: var(--auto-border);
     padding: 0;
     box-sizing: border-box;
+
+    &.border {
+        border: var(--auto-border);
+    }
 
     &>.auto-card-header {
         display: flex;
         position: relative;
         flex-direction: row;
         align-items: center;
-        padding: calc(0.5 * var(--auto-spacing));
+        padding: calc(0.8 * var(--auto-spacing));
         border-radius: var(--auto-border-radius) var(--auto-border-radius) 0 0;
         flex-shrink: 0;
         font: var(--auto-title-font);
-        color: var(--auto-panel-header-color);
-        background-color: var(--auto-panel-header-bgcolor);
+        color: var(--auto-card-header-color);
+        background-color: var(--auto-card-header-bgcolor);
+        gap: 0.5em;
 
         &>.auto-card-title {
             display: flex;
@@ -54,15 +58,14 @@
     }
 
     &>.auto-card-footer {
-        padding: calc(0.8 * var(--auto-spacing));
-        padding-top: 1rem;
-        padding-bottom: 1rem;
+        padding: calc(0.8 * var(--auto-spacing)) var(--auto-spacing);
         display: flex;
         position: relative;
         flex-direction: row;
         align-items: center;
         border-top: var(--auto-border);
         border-radius: 0 0 var(--auto-border-radius) var(--auto-border-radius);
+        gap: 0.5em;
 
         &>*[type='button'] {
             margin-left: auto;

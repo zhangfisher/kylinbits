@@ -34,8 +34,8 @@ export const renderDerivedVarsStory = () => {
                     <div class="auto-card-body-item" style="background-color:var(--auto-workspace-bgcolor);border:var(--auto-border)">
                         工作区背景: var(--auto-workspace-bgcolor)
                     </div>
-                    <div class="auto-card-body-item" style="background-color:var(--auto-panel-header-bgcolor);border:var(--auto-border)">
-                        面板头部背景: var(--auto-panel-header-bgcolor)
+                    <div class="auto-card-body-item" style="background-color:var(--auto-card-header-bgcolor);border:var(--auto-border)">
+                        面板头部背景: var(--auto-card-header-bgcolor)
                     </div>
                     <div class="auto-card-body-item" style="background-color:var(--auto-input-bgcolor);border:var(--auto-input-border)">
                         输入框背景: var(--auto-input-bgcolor)
@@ -47,11 +47,11 @@ export const renderDerivedVarsStory = () => {
             <div class="auto-card" style="border:none;">
                 <div class="auto-card-header">面板样式</div>
                 <div class="auto-card-body ">
-                    <div class="auto-card-body-item" style="margin-bottom:1em;background-color:var(--auto-panel-header-bgcolor);font:var(--auto-panel-header);color:var(--auto-panel-header-color)">
-                        面板头部: bg(--auto-panel-header-bgcolor) / color(--auto-panel-header-color)
+                    <div class="auto-card-body-item" style="margin-bottom:1em;background-color:var(--auto-card-header-bgcolor);font:var(--auto-card-header);color:var(--auto-card-header-color)">
+                        面板头部: bg(--auto-card-header-bgcolor) / color(--auto-card-header-color)
                     </div>
-                    <div class="auto-card-body-item" style="background-color:var(--auto-panel-bgcolor);border:var(--auto-border)">
-                        面板背景: var(--auto-panel-bgcolor)
+                    <div class="auto-card-body-item" style="background-color:var(--auto-card-bgcolor);border:var(--auto-border)">
+                        面板背景: var(--auto-card-bgcolor)
                     </div>
                 </div>
             </div>
