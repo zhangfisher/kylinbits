@@ -1,5 +1,5 @@
 export const darkColorVars = {
-    "--k-color": "var(--k-color-gray-0) !important",
+    "--k-color-0": "var(--k-color-gray-0) !important",
     "--k-color-1": "var(--k-color-gray-1) !important",
     "--k-color-2": "var(--k-color-gray-2) !important",
     "--k-color-3": "var(--k-color-gray-3) !important",
@@ -9,7 +9,7 @@ export const darkColorVars = {
     "--k-color-7": "var(--k-color-gray-7) !important",
     "--k-color-8": "var(--k-color-gray-8) !important",
     "--k-color-9": "var(--k-color-gray-9) !important",
-    "--k-bgcolor": "var(--k-color-gray-9) !important",
+    "--k-bgcolor-0": "var(--k-color-gray-9) !important",
     "--k-bgcolor-1": "var(--k-color-gray-8) !important",
     "--k-bgcolor-2": "var(--k-color-gray-7) !important",
     "--k-bgcolor-3": "var(--k-color-gray-6) !important",
@@ -21,7 +21,7 @@ export const darkColorVars = {
     "--k-bgcolor-9": "var(--k-color-gray-0) !important",
 };
 export const darkColorizedColorVars = {
-    "--k-color": "var(--k-color-gray-0) !important",
+    "--k-color-0": "var(--k-color-gray-0) !important",
     "--k-color-1": "var(--k-color-gray-1) !important",
     "--k-color-2": "var(--k-color-gray-2) !important",
     "--k-color-3": "var(--k-color-gray-3) !important",
@@ -31,7 +31,7 @@ export const darkColorizedColorVars = {
     "--k-color-7": "var(--k-color-gray-7) !important",
     "--k-color-8": "var(--k-color-gray-8) !important",
     "--k-color-9": "var(--k-color-gray-9) !important",
-    "--k-bgcolor": "var(--k-color-gray-9) !important",
+    "--k-bgcolor-0": "var(--k-color-gray-9) !important",
     "--k-bgcolor-1": "var(--k-color-gray-8) !important",
     "--k-bgcolor-2": "var(--k-color-gray-7) !important",
     "--k-bgcolor-3": "var(--k-color-gray-6) !important",

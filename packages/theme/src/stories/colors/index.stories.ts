@@ -4,6 +4,7 @@ import { renderSemanticsColorStory } from './semantics.story'
 import { renderThemeScopeStory } from './theme.scope.story'
 import { renderFormStory } from './form.story'
 import { renderAutoColorStory } from './theme.autocolor.story'
+import { renderDerivedVarsStory } from './derived.story'
 
 const meta: Meta = {
     title: '主题颜色',
@@ -32,4 +33,8 @@ export const scopeThemeColors: Story = {
 export const formColors: Story = {
     name: '表单',
     render: renderFormStory,
+}
+export const derivedVars: Story = {
+    name: '派生变量',
+    render: renderDerivedVarsStory,
 }

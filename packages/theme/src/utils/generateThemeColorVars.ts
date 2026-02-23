@@ -18,5 +18,3 @@ export function generateThemeColorVars(color: string, options?: ThemeVariantOpti
     }, {}) as Required<ThemeOptions>;
     return vars;
 }
-
-console.log(generateThemeColorVars("#1677ff", { prefix: "--k-color-gray-" }));

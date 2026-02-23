@@ -199,7 +199,7 @@ export class ThemeScope {
         const defaultThemeSelector =
             this.options.themeColor === this.options.defaultThemeColor ? `,:root` : "";
 
-        return `${this._selectors.join(",")}[data-theme='${themeColor}']${defaultThemeSelector}{\n    color-scheme: light;\n${toVarStyles(this._createThemeColorVars(themeColor))};\n}\n${this._selectors.join(",")}[data-theme='${themeColor}'][dark]{\n    color-scheme: dark;\n${toVarStyles(this._createThemeColorVars(themeColor, true))};\n} `;
+        return `${this._selectors.join(",")}[data-theme='${themeColor}']${defaultThemeSelector}{\n    color-scheme: light;\n${toVarStyles(this._createThemeColorVars(themeColor))};\n}\n${this._selectors.join(",")}[data-theme='${themeColor}'][dark]${defaultThemeSelector}[dark]{\n    color-scheme: dark;\n${toVarStyles(this._createThemeColorVars(themeColor, true))};\n} `;
     }
 
     protected _injectThemeColorStyles() {
@@ -276,12 +276,18 @@ export class ThemeScope {
         }
     }
     protected _generateBaseStyles() {
-        const baseStyles = `${this._selectors.join(",")}{\n${toVarStyles(baseVars)}\n${toVarStyles(lightColorVars)}\n${toVarStyles(lightColorizedColorVars)}\n${toVarStyles(derivedVars)}}}\n`;
+        const baseStyles = `${this._selectors.join(",")}{\n${toVarStyles(baseVars)}\n${toVarStyles(lightColorVars)}\n${toVarStyles(derivedVars)}}\n`;
         const sizeStyles = getVarsStyles(sizeVars, this._selectors, "data-size");
         const radiusStyles = getVarsStyles(radiusVars, this._selectors, "data-radius");
         const spacingStyles = getVarsStyles(spacingVars, this._selectors, "data-spacing");
         const shadowStyles = getVarsStyles(shadowVars, this._selectors, "data-shadow");
-        return `${baseStyles}\n${sizeStyles}\n${radiusStyles}\n${spacingStyles}\n${shadowStyles}\n`;
+
+        const darkStyles = `${this._selectors.join(",")}[dark]{\n${toVarStyles(darkColorVars)}\n}\n`;
+        const lightColorizedStyles = `${this._selectors.join(",")}[colorized]{\n${toVarStyles(lightColorizedColorVars)}\n}\n`;
+        const darkColorizedStyles = `${this._selectors.join(",")}[dark][colorized]{\n${toVarStyles(darkColorizedColorVars)}\n}\n`;
+        const derivedStyles = `${this._selectors.join(",")}{\n${toVarStyles(derivedVars)}}\n`;
+
+        return `${baseStyles}\n${darkStyles}\n${lightColorizedStyles}\n${darkColorizedStyles}\n${sizeStyles}\n${radiusStyles}\n${spacingStyles}\n${shadowStyles}\n${derivedStyles}`;
     }
 
     /**

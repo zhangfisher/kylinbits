@@ -8,37 +8,38 @@ export const derivedVars = {
     "--auto-theme-color": "var(--k-color-theme-5)",
 
     /** 活动颜色 */
-    "--auto-selected-color": "var(--k-color-theme-8)!important",
+    "--auto-selected-color": "var(--k-color-theme-5)!important",
     "--auto-selected-bgcolor":
-        "color-mix(in srgb, var(--k-theme-bgcolor-1), transparent 15%)!important",
+        "color-mix(in srgb, var(--auto-selected-color), transparent 90% )!important",
 
-    "--auto-hover-color": "var(--k-color-theme-6)!important",
+    "--auto-hover-color": "var(--auto-theme-color)!important",
     "--auto-hover-bgcolor":
-        "color-mix(in srgb, var(--k-theme-bgcolor-1) 50%, transparent 5%)!important",
-
-    "--auto-disable-color": "color-mix(in srgb, var(--k-color-theme-3), transparent 50%)!important",
-    "--auto-disable-bgcolor":
-        "color-mix(in srgb, var(--auto-selected-bgcolor), transparent 60%)!important",
+        "color-mix(in srgb, var(--auto-hover-color), transparent 85%)!important",
 
     "--auto-active-color": "var(--auto-color)!important",
     "--auto-active-bgcolor": "var(--k-color-theme-2)!important",
+
+    "--auto-disable-color": "color-mix(in srgb, var(--k-color-8), gray 30%)!important",
+    "--auto-disable-bgcolor": "color-mix(in srgb, currentColor, transparent 60%)!important",
 
     /* 字体颜色 */
     "--auto-color": "var(--k-color-2)",
     "--auto-secondary-color": "var(--k-color-5)",
 
     /* 背景颜色: 用于面板/对话框/组件的背景 */
-    "--auto-bgcolor": "var(--k-bgcolor-2)",
-    "--auto-workspace-bgcolor": "var(--k-bgcolor-5)",
+    "--auto-bgcolor": "var(--k-bgcolor-0)",
+    "--auto-workspace-bgcolor": "var(--k-bgcolor-1)",
 
     /* 边框 */
     "--auto-border-size": "1px",
-    "--auto-border-color": "var(--k-color-1)",
+    "--auto-border-color": "var(--k-color-6)",
     "--auto-border": "var(--auto-border-size) solid var(--auto-border-color)",
-    "--auto-selected-border": "1px solid var(--k-color-3)",
-    "--auto-border-active-color": "var(--k-color-6)",
-    "--auto-active-border": "1px solid var(-auto-border-active-color)",
-    "--auto-disable-border": "1px solid var(--auto-disable-color)",
+    "--auto-selected-border-color": "var(--auto-selected-color)",
+    "--auto-selected-border": "1px solid var(--auto-selected-border-color)",
+    "--auto-active-border-color": "var(--k-color-5)",
+    "--auto-active-border": "1px solid var(--auto-active-border-color)",
+    "--auto-disable-border-color": "var(--auto-disable-color)",
+    "--auto-disable-border": "1px solid var(--auto-disable-border-color)",
 
     /* 排版/字体 */
     "--auto-font": "var(--auto-font-weight) var(--auto-font-size)/1.5 var(--auto-font-family)",
