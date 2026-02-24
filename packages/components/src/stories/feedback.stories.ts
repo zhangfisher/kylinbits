@@ -41,7 +41,7 @@ export const Info: Story = {
     name: "信息提示",
     render: () => {
         return html`
-            <kylin-flex direction="column" gap="1.5em" align="center">
+            <kylin-flex direction="column" gap="1.5em" align="center" style="height: 300px">
                 <kylin-feedback
                     type="info"
                     message="信息提示"
@@ -62,7 +62,7 @@ export const Success: Story = {
     name: "成功提示",
     render: () => {
         return html`
-            <kylin-flex direction="column" gap="1.5em" align="center">
+            <kylin-flex direction="column" gap="1.5em" align="center" style="height: 300px">
                 <kylin-feedback
                     type="success"
                     message="操作成功"
@@ -73,10 +73,7 @@ export const Success: Story = {
                     message="保存成功"
                     description="数据已成功保存到服务器"
                 ></kylin-feedback>
-                <kylin-feedback
-                    type="success"
-                    message="提交成功"
-                ></kylin-feedback>
+                <kylin-feedback type="success" message="提交成功"></kylin-feedback>
             </kylin-flex>
         `;
     },
@@ -86,7 +83,7 @@ export const Warning: Story = {
     name: "警告提示",
     render: () => {
         return html`
-            <kylin-flex direction="column" gap="1.5em" align="center">
+            <kylin-flex direction="column" gap="1.5em" align="center" style="height: 300px">
                 <kylin-feedback
                     type="warning"
                     message="警告信息"
@@ -107,7 +104,7 @@ export const ErrorStory: Story = {
     name: "错误提示",
     render: () => {
         return html`
-            <kylin-flex direction="column" gap="1.5em" align="center">
+            <kylin-flex direction="column" gap="1.5em" align="center" style="height: 300px">
                 <kylin-feedback
                     type="error"
                     message="操作失败"
@@ -128,7 +125,7 @@ export const CustomIcon: Story = {
     name: "自定义图标",
     render: () => {
         return html`
-            <kylin-flex direction="column" gap="1.5em" align="center">
+            <kylin-flex direction="column" gap="1.5em" align="center" style="height: 300px">
                 <kylin-feedback
                     icon="heart"
                     message="感谢支持"
@@ -153,7 +150,7 @@ export const WithSlots: Story = {
     name: "使用插槽自定义内容",
     render: () => {
         return html`
-            <kylin-flex direction="column" gap="2em" align="center">
+            <kylin-flex direction="column" gap="2em" align="center" style="height: 300px">
                 <!-- 自定义图标 slot -->
                 <kylin-feedback message="自定义图标示例" description="使用 slot 自定义图标">
                     <svg
@@ -164,13 +161,7 @@ export const WithSlots: Story = {
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
                     >
-                        <circle
-                            cx="12"
-                            cy="12"
-                            r="10"
-                            stroke="#52c41a"
-                            stroke-width="2"
-                        />
+                        <circle cx="12" cy="12" r="10" stroke="#52c41a" stroke-width="2" />
                         <path
                             d="M8 12L11 15L16 9"
                             stroke="#52c41a"
@@ -182,18 +173,13 @@ export const WithSlots: Story = {
                 </kylin-feedback>
 
                 <!-- 自定义消息 slot -->
-                <kylin-feedback
-                    type="success"
-                    description="这是一个使用自定义消息 slot 的示例"
-                >
-                    <div slot="message" style="font-size: 1.5em; font-weight: bold;">
-                        🎉 恭喜您完成操作！
-                    </div>
+                <kylin-feedback type="success" description="这是一个使用自定义消息 slot 的示例">
+                    <div slot="message" style="font-size: 1.5em; font-weight: bold">🎉 恭喜您完成操作！</div>
                 </kylin-feedback>
 
                 <!-- 自定义描述 slot -->
                 <kylin-feedback type="info" message="详细信息">
-                    <div slot="description" style="line-height: 1.8;">
+                    <div slot="description" style="line-height: 1.8">
                         <p>这是一个自定义描述内容</p>
                         <p>可以包含多行文本和 HTML 元素</p>
                         <p>支持完全自定义样式和结构</p>
@@ -202,13 +188,9 @@ export const WithSlots: Story = {
 
                 <!-- 同时使用多个 slot -->
                 <kylin-feedback>
-                    <div slot="icon" style="font-size: 4em;">🚀</div>
-                    <div slot="message" style="color: #1890ff; font-weight: bold;">
-                        启动成功
-                    </div>
-                    <div slot="description">
-                        应用已成功启动，所有服务运行正常
-                    </div>
+                    <div slot="icon" style="font-size: 4em">🚀</div>
+                    <div slot="message" style="color: #1890ff; font-weight: bold">启动成功</div>
+                    <div slot="description">应用已成功启动，所有服务运行正常</div>
                 </kylin-feedback>
             </kylin-flex>
         `;
@@ -219,7 +201,7 @@ export const WithActions: Story = {
     name: "带操作按钮",
     render: () => {
         return html`
-            <kylin-flex direction="column" gap="2em" align="center">
+            <kylin-flex direction="column" gap="2em" align="center" style="height: 300px">
                 <kylin-feedback
                     type="info"
                     message="确认删除"
@@ -308,7 +290,7 @@ export const WithActionsAndFeedback: Story = {
         };
 
         return html`
-            <kylin-flex direction="column" gap="2em" align="center">
+            <kylin-flex direction="column" gap="2em" align="center" style="height: 300px">
                 <!-- 删除确认场景 -->
                 <kylin-feedback
                     type="error"
@@ -377,7 +359,7 @@ export const FitContainer: Story = {
     name: "充满容器",
     render: () => {
         return html`
-            <kylin-flex gap="1.5em" wrap style="width: 100%">
+            <kylin-flex gap="1.5em" wrap style="width: 100%" style="height: 300px">
                 <kylin-flex
                     direction="column"
                     align="center"
@@ -457,7 +439,7 @@ export const LongContent: Story = {
                 direction="column"
                 gap="2em"
                 align="center"
-                style="width: 100%; max-width: 600px; padding: 2em;"
+                style="width: 100%; max-width: 600px; padding: 2em;height:300px"
             >
                 <kylin-feedback
                     type="info"
@@ -509,52 +491,60 @@ export const AllTypes: Story = {
                     direction="column"
                     align="center"
                     justify="center"
-                    style="width: 250px; height: 180px; border: 1px solid #e0e0e0; border-radius: 8px; padding: 1em;"
+                    style="
+                        width: 250px;
+                        height: 180px;
+                        border: 1px solid #e0e0e0;
+                        border-radius: 8px;
+                        padding: 1em;
+                    "
                 >
-                    <kylin-feedback
-                        type="info"
-                        message="信息"
-                        description="这是一条信息提示"
-                    ></kylin-feedback>
+                    <kylin-feedback type="info" message="信息" description="这是一条信息提示"></kylin-feedback>
                 </kylin-flex>
 
                 <kylin-flex
                     direction="column"
                     align="center"
                     justify="center"
-                    style="width: 250px; height: 180px; border: 1px solid #e0e0e0; border-radius: 8px; padding: 1em;"
+                    style="
+                        width: 250px;
+                        height: 180px;
+                        border: 1px solid #e0e0e0;
+                        border-radius: 8px;
+                        padding: 1em;
+                    "
                 >
-                    <kylin-feedback
-                        type="success"
-                        message="成功"
-                        description="操作已完成"
-                    ></kylin-feedback>
+                    <kylin-feedback type="success" message="成功" description="操作已完成"></kylin-feedback>
                 </kylin-flex>
 
                 <kylin-flex
                     direction="column"
                     align="center"
                     justify="center"
-                    style="width: 250px; height: 180px; border: 1px solid #e0e0e0; border-radius: 8px; padding: 1em;"
+                    style="
+                        width: 250px;
+                        height: 180px;
+                        border: 1px solid #e0e0e0;
+                        border-radius: 8px;
+                        padding: 1em;
+                    "
                 >
-                    <kylin-feedback
-                        type="warning"
-                        message="警告"
-                        description="请注意"
-                    ></kylin-feedback>
+                    <kylin-feedback type="warning" message="警告" description="请注意"></kylin-feedback>
                 </kylin-flex>
 
                 <kylin-flex
                     direction="column"
                     align="center"
                     justify="center"
-                    style="width: 250px; height: 180px; border: 1px solid #e0e0e0; border-radius: 8px; padding: 1em;"
+                    style="
+                        width: 250px;
+                        height: 180px;
+                        border: 1px solid #e0e0e0;
+                        border-radius: 8px;
+                        padding: 1em;
+                    "
                 >
-                    <kylin-feedback
-                        type="error"
-                        message="错误"
-                        description="操作失败"
-                    ></kylin-feedback>
+                    <kylin-feedback type="error" message="错误" description="操作失败"></kylin-feedback>
                 </kylin-flex>
             </kylin-flex>
         `;
@@ -575,7 +565,7 @@ export const RealWorldScenarios: Story = {
                     direction="column"
                     align="center"
                     justify="center"
-                    style="min-height: 200px; border: 1px solid #e0e0e0; border-radius: 8px; padding: 2em; background: #fafafa;"
+                    style="height:200px;width:100%;min-height: 200px; border: 1px solid #e0e0e0; border-radius: 8px; padding: 2em; background: #fafafa;"
                 >
                     <kylin-feedback
                         type="success"
@@ -602,7 +592,7 @@ export const RealWorldScenarios: Story = {
                     direction="column"
                     align="center"
                     justify="center"
-                    style="min-height: 200px; border: 1px solid #e0e0e0; border-radius: 8px; padding: 2em; background: #fafafa;"
+                    style="height:200px;width:100%;min-height: 200px; border: 1px solid #e0e0e0; border-radius: 8px; padding: 2em; background: #fafafa;"
                 >
                     <kylin-feedback
                         type="error"
@@ -629,7 +619,7 @@ export const RealWorldScenarios: Story = {
                     direction="column"
                     align="center"
                     justify="center"
-                    style="min-height: 200px; border: 1px solid #e0e0e0; border-radius: 8px; padding: 2em; background: #fafafa;"
+                    style="min-height: 200px;width:100%; border: 1px solid #e0e0e0; border-radius: 8px; padding: 2em; background: #fafafa;"
                 >
                     <kylin-feedback
                         icon="inbox"
@@ -650,7 +640,7 @@ export const RealWorldScenarios: Story = {
                     direction="column"
                     align="center"
                     justify="center"
-                    style="min-height: 200px; border: 1px solid #e0e0e0; border-radius: 8px; padding: 2em; background: #fafafa;"
+                    style="min-height: 200px;width:100%; border: 1px solid #e0e0e0; border-radius: 8px; padding: 2em; background: #fafafa;"
                 >
                     <kylin-feedback
                         type="warning"
@@ -667,8 +657,7 @@ export const RealWorldScenarios: Story = {
                                 label: "联系管理员",
                                 type: "primary",
                                 variant: "outline",
-                                onClick: () =>
-                                    alert("正在打开管理员联系方式..."),
+                                onClick: () => alert("正在打开管理员联系方式..."),
                             },
                         ]}
                     ></kylin-feedback>

@@ -35,21 +35,26 @@ const renderIcon = (args: any) => html`
     <kylin-flex
         wrap
         gap="1em"
-        style="border: var(--auto-border);padding:1em;font-size:2em"
+        style="background:var(--auto-bgcolor); border: var(--auto-border);padding:1em;font-size:2em"
     >
         ${repeat(icons, (name) => {
             return html`<kylin-icon name=${name}></kylin-icon>`;
         })}
     </kylin-flex>
     <h3>继承尺寸: 继承容器字体尺寸</h3>
-    <div style="border: var(--auto-border);padding:1em;margin-bottom:1em;">
-        <p style="margin-bottom:0.5em;color:var(--auto-text-secondary);">
-            调整容器字体大小来控制图标尺寸（当前: ${args.inheritContainerFontSize}px）
+    <div
+        style="background:var(--auto-bgcolor); border: var(--auto-border);padding:1em;margin-bottom:1em;"
+    >
+        <p
+            style="background:var(--auto-bgcolor); margin-bottom:0.5em;color:var(--auto-text-secondary);"
+        >
+            调整容器字体大小来控制图标尺寸（当前:
+            ${args.inheritContainerFontSize}px）
         </p>
         <kylin-flex
             wrap
             gap="1em"
-            style="font-size:${args.inheritContainerFontSize}px"
+            style="background:var(--auto-bgcolor); font-size:${args.inheritContainerFontSize}px"
         >
             ${repeat(icons, (name) => {
                 return html`<kylin-icon inherit name=${name}></kylin-icon>`;
@@ -60,14 +65,18 @@ const renderIcon = (args: any) => html`
     <kylin-flex
         wrap
         gap="1em"
-        style="border: var(--auto-border);padding:1em;font-size:2em"
+        style="background:var(--auto-bgcolor); border: var(--auto-border);padding:1em;font-size:2em"
     >
         ${repeat(icons, (name) => {
             return html`<kylin-icon ze="12px" name=${name}></kylin-icon>`;
         })}
     </kylin-flex>
     <h3>圆形</h3>
-    <kylin-flex wrap gap="1em" style="border: var(--auto-border);padding:1em;">
+    <kylin-flex
+        wrap
+        gap="1em"
+        style="background:var(--auto-bgcolor); border: var(--auto-border);padding:1em;"
+    >
         ${repeat(icons, (name) => {
             return html`<kylin-icon
                 size=${args.size}
@@ -83,7 +92,11 @@ const renderIcon = (args: any) => html`
         })}
     </kylin-flex>
     <h3>圆角矩形</h3>
-    <kylin-flex wrap gap="1em" style="border: var(--auto-border);padding:1em;">
+    <kylin-flex
+        wrap
+        gap="1em"
+        style="background:var(--auto-bgcolor); border: var(--auto-border);padding:1em;"
+    >
         ${repeat(icons, (name) => {
             return html`<kylin-icon
                 size=${args.size}

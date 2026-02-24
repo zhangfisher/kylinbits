@@ -14,7 +14,7 @@ import { RefReferenceDemo } from "./RefReferenceDemo";
 import { OpenControlDemo } from "./OpenControlDemo";
 import { CaretDemo } from "./CaretDemo";
 import { NestedDropdownDemo } from "./NestedDropdownTest";
-import { fn } from "storybook/internal/test";
+import { fn } from "@storybook/test";
 
 const meta: Meta = {
     title: "通用/KylinDropdown",

@@ -7,7 +7,7 @@ export const styles = css`
         position: relative;
         align-items: center;
         justify-content: center;
-        gap: 1em;
+        gap: 0.5em;
         padding: 2em;
         text-align: center;
         background-color: var(--auto-bgcolor);
@@ -59,7 +59,7 @@ export const styles = css`
     }
 
     .feedback-actions {
-        margin-top: 2em;
+        margin-top: 1.5;
     }
 
     /* Slot 样式 */

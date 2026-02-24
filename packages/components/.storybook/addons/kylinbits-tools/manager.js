@@ -1,7 +1,7 @@
 /* eslint-disable no-alert */
 /* eslint-disable no-console */
-const React = require('react')
-const { addons, types } = require('@storybook/manager-api')
+import React from 'react'
+import { addons, types } from '@storybook/manager-api'
 
 const ADDON_ID = 'kylinbits-tools'
 

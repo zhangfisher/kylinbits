@@ -1,4 +1,4 @@
-import { css } from 'lit'
+import { css } from "lit";
 
 export const styles = css`
     :host {
@@ -7,8 +7,7 @@ export const styles = css`
         align-items: center;
         justify-content: center;
         text-align: center;
-        padding: calc(0.4 * var(--k-spacing-medium))
-            calc(0.8 * var(--k-spacing-medium));
+        padding: calc(0.4 * var(--k-spacing-medium)) calc(0.8 * var(--k-spacing-medium));
         border-radius: var(--auto-border-radius);
         font: var(--auto-font);
         cursor: pointer;
@@ -31,8 +30,7 @@ export const styles = css`
         flex-shrink: 0;
     }
     :host([variant="outline"]) {
-        border: 1px solid
-            color-mix(in srgb, var(--k-theme-color) 30%, white 10%);
+        border: 1px solid color-mix(in srgb, var(--k-theme-color) 30%, white 10%);
     }
 
     /**
@@ -66,7 +64,7 @@ export const styles = css`
      */
     :host([shape="circle"]) {
         border-radius: 50% !important;
-        aspect-ratio: 1;
+        aspect-ratio: 1 !important;
         flex-direction: column !important;
         gap: 0;
         --kylin-icon-size: 2em;
@@ -118,11 +116,7 @@ export const styles = css`
         color: var(--k-color-primary);
     }
     :host([variant="ghost"][type="primary"]:hover) {
-        background-color: color-mix(
-            in srgb,
-            var(--k-color-primary) 15%,
-            white 5%
-        ) !important;
+        background-color: color-mix(in srgb, var(--k-color-primary) 15%, white 5%) !important;
     }
 
     :host([type="success"]) {
@@ -137,11 +131,7 @@ export const styles = css`
         color: var(--k-color-success);
     }
     :host([variant="ghost"][type="success"]:hover) {
-        background-color: color-mix(
-            in srgb,
-            var(--k-color-success) 15%,
-            white 5%
-        ) !important;
+        background-color: color-mix(in srgb, var(--k-color-success) 15%, white 5%) !important;
     }
 
     :host([type="warning"]) {
@@ -156,11 +146,7 @@ export const styles = css`
         color: var(--k-color-warning);
     }
     :host([variant="ghost"][type="warning"]:hover) {
-        background-color: color-mix(
-            in srgb,
-            var(--k-color-warning) 15%,
-            white 5%
-        ) !important;
+        background-color: color-mix(in srgb, var(--k-color-warning) 15%, white 5%) !important;
     }
 
     :host([type="error"]),
@@ -179,11 +165,7 @@ export const styles = css`
     }
     :host([variant="ghost"][type="danger"]:hover),
     :host([variant="ghost"][type="error"]:hover) {
-        background-color: color-mix(
-            in srgb,
-            var(--k-color-danger) 15%,
-            white 5%
-        ) !important;
+        background-color: color-mix(in srgb, var(--k-color-danger) 15%, white 5%) !important;
     }
 
     :host([type="info"]) {
@@ -212,13 +194,7 @@ export const styles = css`
         width: 100%;
     }
     /* Checkbox */
-    :host(
-            [checkable][checked]:not(
-                    [checkPos="before"],
-                    [checkPos="after"],
-                    [checkPos="corner"]
-                )
-        ) {
+    :host([checkable][checked]:not([checkPos="before"], [checkPos="after"], [checkPos="corner"])) {
         background-color: var(--k-color-primary);
         color: color-mix(in srgb, var(--k-color-primary) 0%, white 100%);
     }
@@ -282,83 +258,43 @@ export const styles = css`
     }
     :host([type="primary"]) .tags > .tag {
         &:hover {
-            background-color: color-mix(
-                in srgb,
-                var(--auto-primary-color),
-                white 20%
-            ) !important;
+            background-color: color-mix(in srgb, var(--auto-primary-color), white 20%) !important;
         }
         &.checked {
-            background-color: color-mix(
-                in srgb,
-                var(--auto-primary-color),
-                black 10%
-            ) !important;
+            background-color: color-mix(in srgb, var(--auto-primary-color), black 10%) !important;
         }
     }
     :host([type="success"]) .tags > .tag {
         &:hover {
-            background-color: color-mix(
-                in srgb,
-                var(--auto-success-color),
-                white 20%
-            ) !important;
+            background-color: color-mix(in srgb, var(--auto-success-color), white 20%) !important;
         }
         &.checked {
-            background-color: color-mix(
-                in srgb,
-                var(--auto-success-color),
-                black 10%
-            ) !important;
+            background-color: color-mix(in srgb, var(--auto-success-color), black 10%) !important;
         }
     }
     :host([type="warning"]) .tags > .tag {
         &:hover {
-            background-color: color-mix(
-                in srgb,
-                var(--auto-warning-color),
-                white 20%
-            ) !important;
+            background-color: color-mix(in srgb, var(--auto-warning-color), white 20%) !important;
         }
         &.checked {
-            background-color: color-mix(
-                in srgb,
-                var(--auto-warning-color),
-                black 10%
-            ) !important;
+            background-color: color-mix(in srgb, var(--auto-warning-color), black 10%) !important;
         }
     }
     :host([type="danger"]) .tags > .tag,
     :host([type="error"]) .tags > .tag {
         &:hover {
-            background-color: color-mix(
-                in srgb,
-                var(--auto-danger-color),
-                white 20%
-            ) !important;
+            background-color: color-mix(in srgb, var(--auto-danger-color), white 20%) !important;
         }
         &.checked {
-            background-color: color-mix(
-                in srgb,
-                var(--auto-danger-color),
-                black 10%
-            ) !important;
+            background-color: color-mix(in srgb, var(--auto-danger-color), black 10%) !important;
         }
     }
     :host([type="info"]) .tags > .tag {
         &:hover {
-            background-color: color-mix(
-                in srgb,
-                var(--auto-info-color),
-                white 20%
-            ) !important;
+            background-color: color-mix(in srgb, var(--auto-info-color), white 20%) !important;
         }
         &.checked {
-            background-color: color-mix(
-                in srgb,
-                var(--auto-info-color),
-                black 10%
-            ) !important;
+            background-color: color-mix(in srgb, var(--auto-info-color), black 10%) !important;
         }
     }
     /* 使用伪元素创建涟漪效果 */
@@ -393,4 +329,4 @@ export const styles = css`
             opacity: 0;
         }
     }
-`
+`;

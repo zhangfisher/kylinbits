@@ -1,7 +1,7 @@
 import type { Preview } from "@storybook/web-components-vite";
 import { initialize, mswLoader } from "msw-storybook-addon";
-import "../../core/src/styles/index.less";
-import "../../core/src/index.ts";
+import "@kylinbits/theme";
+import "../../theme/src/styles/index.less";
 import "../src/styles/icons.less";
 import { handlers } from "./api.ts";
 import "../src/components/Application/index";

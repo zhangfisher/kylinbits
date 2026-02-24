@@ -36,7 +36,7 @@ export type AutoFeedbackProps = {
     /**
      * 预设类型，会自动显示对应的图标
      */
-    type?: "info" | "success" | "warning" | "error";
+    type?: "default" | "primary" | "info" | "danger" | "warning" | "success" | "error";
     /**
      * 操作按钮列表
      */
@@ -67,7 +67,7 @@ export class KylinFeedBack extends KylinElementBase<AutoFeedbackProps> {
     actions?: Partial<KylinButtonProps>[];
 
     @property({ type: Boolean, reflect: true })
-    fit: boolean = false;
+    fit: boolean = true;
 
     /**
      * 判断 icon 是否为图片地址
@@ -110,7 +110,9 @@ export class KylinFeedBack extends KylinElementBase<AutoFeedbackProps> {
 
         // 如果有 slot 内容，使用 slot；否则使用默认渲染逻辑
         if (this.querySelector('[slot="icon"]')) {
-            return html`<slot name="icon"></slot>`;
+            return html`
+                <slot name="icon"></slot>
+            `;
         }
 
         if (!icon) return html``;
@@ -138,7 +140,9 @@ export class KylinFeedBack extends KylinElementBase<AutoFeedbackProps> {
     private _renderMessage() {
         // 如果有 slot 内容，使用 slot；否则使用 message 属性
         if (this.querySelector('[slot="message"]')) {
-            return html`<slot name="message"></slot>`;
+            return html`
+                <slot name="message"></slot>
+            `;
         }
 
         if (!this.message) return html``;
@@ -151,7 +155,9 @@ export class KylinFeedBack extends KylinElementBase<AutoFeedbackProps> {
     private _renderDescription() {
         // 如果有 slot 内容，使用 slot；否则使用 description 属性
         if (this.querySelector('[slot="description"]')) {
-            return html`<slot name="description"></slot>`;
+            return html`
+                <slot name="description"></slot>
+            `;
         }
 
         if (!this.description) return html``;
@@ -173,7 +179,7 @@ export class KylinFeedBack extends KylinElementBase<AutoFeedbackProps> {
                     (action) => html`
                         <kylin-button
                             label="${action.label || ""}"
-                            type="${action.type || "default"}"
+                            type="${action.type || "default"}" 
                             variant="${action.variant || "outline"}"
                             size="${action.size || "medium"}"
                             ?disabled="${action.disabled}"
@@ -181,7 +187,7 @@ export class KylinFeedBack extends KylinElementBase<AutoFeedbackProps> {
                             icon="${action.icon || ""}"
                             @kylin:click="${action.onClick}"
                         ></kylin-button>
-                    `
+                    `,
                 )}
             </kylin-flex>
         </div>`;

@@ -1,56 +1,59 @@
 {
-	"name": "@kylinbits/theme",
-	"module": "src/index.ts",
-	"version": "1.0.7",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/zhangfisher/kylinbits.git"
-	},
-	"exports": {
-		".": {
-			"types": "./dist/index.d.ts",
-			"import": "./dist/index.js",
-			"require": "./dist/index.umd.js"
-		},
-		"./index.css": {
-			"import": "./dist/index.css",
-			"require": "./dist/index.css"
-		},
-		"./themes/*.css": {
-			"import": "./dist/*.css",
-			"require": "./dist/*.css"
-		}
-	},
-	"files": [
-		"dist",
-		"readme.md"
-	],
-	"scripts": {
-		"dev": "vite",
-		"storybook": "storybook dev -p 6006 --no-open",
-		"build": "bun run build:css && tsup",
-		"build:css": "lessc src/styles/index.less dist/index.css",
-		"build:storybook": "storybook build"
-	},
-	"devDependencies": {
-		"@storybook/addon-docs": "^9.1.17",
-		"@storybook/web-components-vite": "^9.1.17",
-		"@types/bun": "1.3.6",
-		"esbuild-copy-files-plugin": "^1.2.1",
-		"less": "^4.5.1",
-		"lit": "^3.3.2",
-		"storybook": "^9.1.17",
-		"tsup": "^8.5.1",
-		"typescript": "^5.9.3",
-		"vanilla-picker": "^2.12.3",
-		"vite": "^7.3.1",
-		"vite-plugin-cp": "^6.0.3",
-		"vitepress": "^1.6.4",
-		"vitepress-demo-plugin": "^1.5.1"
-	},
-	"dependencies": {
-		"@ant-design/fast-color": "^3.0.0",
-		"@yosulramp/material-color-palette-js": "^1.0.4"
-	},
-	"packageManager": "^bun@1.3.6"
+    "name": "@kylinbits/theme",
+    "version": "1.0.7",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/zhangfisher/kylinbits.git"
+    },
+    "files": [
+        "dist",
+        "readme.md"
+    ],
+    "type": "module",
+    "module": "src/index.ts",
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.js",
+            "browser": "./dist/index.global.js"
+        },
+        "./global": {
+            "import": "./dist/index.global.js",
+            "require": "./dist/index.global.js"
+        },
+        "./index.css": {
+            "import": "./dist/index.css",
+            "require": "./dist/index.css"
+        },
+        "./themes/*.css": {
+            "import": "./dist/*.css",
+            "require": "./dist/*.css"
+        }
+    },
+    "scripts": {
+        "dev": "vite",
+        "storybook": "storybook dev -p 6006 --no-open",
+        "build": "bun run build:css && tsup",
+        "build:css": "lessc src/styles/index.less dist/index.css",
+        "build:storybook": "storybook build"
+    },
+    "dependencies": {
+        "@ant-design/fast-color": "^3.0.0",
+        "@yosulramp/material-color-palette-js": "^1.0.4"
+    },
+    "devDependencies": {
+        "@storybook/addon-docs": "^9.1.19",
+        "@storybook/web-components-vite": "^9.1.19",
+        "@swc/core": "^1.15.13",
+        "@types/bun": "1.3.9",
+        "esbuild-copy-files-plugin": "^1.2.1",
+        "less": "^4.5.1",
+        "storybook": "^9.1.19",
+        "tsup": "^8.5.1",
+        "typescript": "^5.9.3",
+        "vanilla-picker": "^2.12.3",
+        "vite": "^7.3.1",
+        "vite-plugin-cp": "^6.0.3"
+    },
+    "packageManager": "^bun@1.3.6"
 }

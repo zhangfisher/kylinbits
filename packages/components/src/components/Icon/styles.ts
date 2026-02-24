@@ -1,4 +1,4 @@
-import { css } from 'lit'
+import { css } from "lit";
 
 export const styles = css`
     :host {
@@ -11,7 +11,7 @@ export const styles = css`
         -webkit-mask-size: cover;
         vertical-align: text-bottom;
         position: relative;
-        font-size: var(--kylin-icon-size);
+        font-size: var(--auto-icon-size);
         width: 1em;
         height: 1em;
         transition: transform 0.3s ease-in-out;
@@ -19,7 +19,7 @@ export const styles = css`
     .shape {
         display: inline-block;
         position: relative;
-        background-color: var(--k-theme-color-2);
+        background-color: var(--auto-third-bgcolor);
         aspect-ratio: 1;
         padding: calc(0.5 * var(--auto-padding));
         &.circle {
@@ -32,4 +32,4 @@ export const styles = css`
     :host([inherit]) .kylin-icon {
         font-size: inherit;
     }
-`
+`;
