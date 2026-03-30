@@ -4,10 +4,9 @@
  *
  */
 export const colors = {
-    // 关键语义颜色
-    "--k-color-primary": "#3292ff",
-    "--k-color-success": "#22c55e",
-    "--k-color-danger": "#ef4444",
-    "--k-color-warning": "#f59e0b",
-    "--k-color-info": "#71717a",
+    // "--k-color-primary": "#3292ff",
+    // "--k-color-success": "#22c55e",
+    // "--k-color-danger": "#ef4444",
+    // "--k-color-warning": "#f59e0b",
+    // "--k-color-info": "#71717a",
 };

@@ -250,7 +250,15 @@ export class ThemeScope {
             this.options.info
         );
         if (!isOverride) return;
-        return `${this._selectors.join(",")}{\n${toVarStyles(vars)}\n}\n`;
+        const darkVars = Object.entries(vars).reduce(
+            (r, [k, v]) => {
+                r[k] = `color-mix(in srgb, ${v}, transparent 60%)!important`;
+                return r;
+            },
+            {} as Record<string, any>,
+        );
+        return `${this._selectors.join(",")}{\n${toVarStyles(vars)}\n}\n
+        ${this._selectors.map((s) => `${s}[dark]`).join(",")}{\n${toVarStyles(darkVars)}\n}\n`;
     }
 
     /**

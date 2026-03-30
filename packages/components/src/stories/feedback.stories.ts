@@ -565,7 +565,7 @@ export const RealWorldScenarios: Story = {
                     direction="column"
                     align="center"
                     justify="center"
-                    style="height:200px;width:100%;min-height: 200px; border: 1px solid #e0e0e0; border-radius: 8px; padding: 2em; background: #fafafa;"
+                    style="height:200px;width:100%;min-height: 200px;  padding: 2em; background: #fafafa;"
                 >
                     <kylin-feedback
                         type="success"
@@ -592,7 +592,7 @@ export const RealWorldScenarios: Story = {
                     direction="column"
                     align="center"
                     justify="center"
-                    style="height:200px;width:100%;min-height: 200px; border: 1px solid #e0e0e0; border-radius: 8px; padding: 2em; background: #fafafa;"
+                    style="height:200px;width:100%;min-height: 200px;  padding: 2em; background: #fafafa;"
                 >
                     <kylin-feedback
                         type="error"
@@ -619,7 +619,7 @@ export const RealWorldScenarios: Story = {
                     direction="column"
                     align="center"
                     justify="center"
-                    style="min-height: 200px;width:100%; border: 1px solid #e0e0e0; border-radius: 8px; padding: 2em; background: #fafafa;"
+                    style="min-height: 200px;width:100%; padding: 2em; background: #fafafa;"
                 >
                     <kylin-feedback
                         icon="inbox"
@@ -640,7 +640,7 @@ export const RealWorldScenarios: Story = {
                     direction="column"
                     align="center"
                     justify="center"
-                    style="min-height: 200px;width:100%; border: 1px solid #e0e0e0; border-radius: 8px; padding: 2em; background: #fafafa;"
+                    style="min-height: 200px;width:100%; padding: 2em; background: #fafafa;"
                 >
                     <kylin-feedback
                         type="warning"
